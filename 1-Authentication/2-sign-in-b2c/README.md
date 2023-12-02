@@ -12,7 +12,7 @@ urlFragment: ms-identity-javascript-tutorial
 extensions:
 - services: ms-identity
 - platform: JavaScript
-- endpoint: AAD v2.0
+- endpoint: ME-ID v2.0
 - level: 100
 - client: Vanilla JavaScript SPA
 ---
@@ -33,7 +33,7 @@ extensions:
 
 ## Overview
 
-This sample demonstrates a Vanilla JavaScript single-page application (SPA) that lets users sign-in with [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) using the [Microsoft Authentication Library for JavaScript)](https://github.com/AzureAD/microsoft-authentication-library-for-js) (MSAL.js). In doing so, it also illustrates various authentication and **B2C** concepts, such as [ID tokens](https://docs.microsoft.com/azure/active-directory-b2c/tokens-overview#token-types), [external identity providers](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) , [consumer social accounts](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#consumer-accounts), [single-sign on (SSO)](https://docs.microsoft.com/azure/active-directory-b2c/session-overview), **account selection**, **silent requests** and more.
+This sample demonstrates a Vanilla JavaScript single-page application (SPA) that lets users sign-in with [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) using the [Microsoft Authentication Library for JavaScript)](https://github.com/AzureAD/microsoft-authentication-library-for-js) (MSAL.js). In doing so, it also illustrates various authentication and **B2C** concepts, such as [ID tokens](https://docs.microsoft.com/azure/active-directory-b2c/tokens-overview#token-types), [external identity providers](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) , [consumer social accounts](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#consumer-accounts), [single-sign on (SSO)](https://docs.microsoft.com/azure/active-directory-b2c/session-overview), **account selection**, **silent requests** and more.
 
 ## Scenario
 
@@ -84,7 +84,7 @@ or download and extract the repository *.zip* file.
 
 ### Step 3: Register the sample application(s) in your tenant
 
-> :warning: This sample comes with a pre-registered application for demo purposes. If you would like to use your own **Azure AD B2C** tenant and application, follow the steps below to register and configure the application on **Azure portal**. Otherwise, continue with the steps for [Running the sample](#step-4-running-the-sample).
+> :warning: This sample comes with a pre-registered application for demo purposes. If you would like to use your own **Azure AD B2C** tenant and application, follow the steps below to register and configure the application on **Microsoft admin center**. Otherwise, continue with the steps for [Running the sample](#step-4-running-the-sample).
 
 * follow the steps below for manually register your apps
 
@@ -92,24 +92,24 @@ or download and extract the repository *.zip* file.
 
 To manually register the apps, as a first step you'll need to:
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Microsoft admin center](https://portal.azure.com).
 1. If your account is present in more than one Azure AD B2C tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Azure AD B2C tenant.
 
 #### Create User Flows and Custom Policies
 
-Please refer to: [Tutorial: Create userflows in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
+Please refer to: [Tutorial: Create userflows in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
 
-> :warning: This sample requires B2C user-flows to emit the **emails** claim in the ID token, which is used as **username** by MSAL. To do so, navigate to the [Azure portal](https://portal.azure.com) and locate the **Azure AD B2C** service. Then, navigate to the **User flows** blade. Select the **User Attributes** tab and make sure **Email Address** is checked. Then select the **Application Claims** tab and make sure **Email Addresses** is checked.
+> :warning: This sample requires B2C user-flows to emit the **emails** claim in the ID token, which is used as **username** by MSAL. To do so, navigate to the [Microsoft admin center](https://portal.azure.com) and locate the **Azure AD B2C** service. Then, navigate to the **User flows** blade. Select the **User Attributes** tab and make sure **Email Address** is checked. Then select the **Application Claims** tab and make sure **Email Addresses** is checked.
 >
 > You may want additional claims (such as **object ID** (*oid*) and etc.) to appear in the ID tokens obtained from Azure AD B2C user-flows. In that case, please refer to [User profile attributes](https://learn.microsoft.com/azure/active-directory-b2c/user-profile-attributes) to learn about how to configure your user-flows to emit those claims.
 
 #### Add External Identity Providers
 
-Please refer to: [Tutorial: Add identity providers to your applications in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)
+Please refer to: [Tutorial: Add identity providers to your applications in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)
 
 #### Register the client app (ms-identity-javascript-c1s2)
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select the **Azure Active Directory B2C** service.
+1. Navigate to the [Microsoft admin center](https://portal.azure.com) and select the **Azure AD B2C** service.
 1. Select the **App Registrations** blade on the left, then select **New registration**.
 1. In the **Register an application page** that appears, enter your application's registration information:
     1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `ms-identity-javascript-c1s2`.
@@ -130,7 +130,7 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
 > In the steps below, "ClientID" is the same as "Application ID" or "AppId".
 
 1. Open the `App\authConfig.js` file.
-1. Find the key `clientId` and replace the existing value with the application ID (clientId) of `ms-identity-javascript-c1s2` app copied from the Azure portal.
+1. Find the key `clientId` and replace the existing value with the application ID (clientId) of `ms-identity-javascript-c1s2` app copied from the Microsoft admin center.
 
 To setup your B2C user-flows, do the following:
 
@@ -167,9 +167,9 @@ Were we successful in addressing your learning objective? Consider taking a mome
 	<summary>Expand for troubleshooting info</summary>
 
 Use [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) to get support from the community. Ask your questions on Stack Overflow first and browse existing issues to see if someone has asked your question before.
-Make sure that your questions or comments are tagged with [`azure-active-directory` `react` `ms-identity` `adal` `msal`].
+Make sure that your questions or comments are tagged with [`microsoft-entra-id` `react` `ms-identity` `adal` `msal`].
 
-To provide feedback on or suggest features for Azure Active Directory, visit [User Voice page](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4).
+To provide feedback on or suggest features for Microsoft Entra ID, visit [User Voice page](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4).
 </details>
 
 ## About the code
@@ -279,7 +279,7 @@ When a user clicks on the **forgot your password?** link during sign-in, **Azure
             console.error(error);
 
             if (error.errorMessage) {
-                if (error.errorMessage.indexOf("AADB2C90118") > -1) {
+                if (error.errorMessage.indexOf("ME-IDB2C90118") > -1) {
                 myMSALObj.loginPopup(b2cPolicies.authorities.forgotPassword)
                     .then(response => {
                         console.log(response);
@@ -298,7 +298,7 @@ In case if you are using redirect flow, you should catch the error inside `handl
         .catch(error => {
             console.error(error);
 
-            if (error.errorMessage.indexOf("AADB2C90118") > -1) {
+            if (error.errorMessage.indexOf("ME-IDB2C90118") > -1) {
                 try {
                     myMSALObj.loginRedirect(b2cPolicies.authorities.forgotPassword);
                 } catch(err) {
@@ -377,9 +377,9 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## Learn More
 
-* [What is Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/overview)
+* [What is Azure AD B2C?](https://docs.microsoft.com/azure/active-directory-b2c/overview)
 * [Application types that can be used in Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/application-types)
-* [Recommendations and best practices for Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/best-practices)
+* [Recommendations and best practices for Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/best-practices)
 * [Azure AD B2C session](https://docs.microsoft.com/azure/active-directory-b2c/session-overview)
 * [Building Zero Trust ready apps](https://aka.ms/ztdevsession)
 * [Initialize client applications using MSAL.js](https://docs.microsoft.com/azure/active-directory/develop/msal-js-initializing-client-applications)

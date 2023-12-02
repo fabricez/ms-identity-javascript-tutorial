@@ -16,7 +16,7 @@
 
 ## Overview
 
-This sample demonstrates a Vanilla JavaScript single-page application that lets users authenticate against [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) using the [Microsoft Authentication Library for JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) (MSAL.js), then acquires an **Access Token** for a web API that is also protected by **Azure AD B2C**. In doing so, it also illustrates various authorization and B2C concepts, such as [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens), [Refresh Tokens](https://docs.microsoft.com/azure/active-directory-b2c/tokens-overview#token-types), [Token Lifetimes and Configuration](https://docs.microsoft.com/azure/active-directory-b2c/tokens-overview#configuration), **silent requests** and more.
+This sample demonstrates a Vanilla JavaScript single-page application that lets users authenticate against [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) using the [Microsoft Authentication Library for JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) (MSAL.js), then acquires an **Access Token** for a web API that is also protected by **Azure AD B2C**. In doing so, it also illustrates various authorization and B2C concepts, such as [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens), [Refresh Tokens](https://docs.microsoft.com/azure/active-directory-b2c/tokens-overview#token-types), [Token Lifetimes and Configuration](https://docs.microsoft.com/azure/active-directory-b2c/tokens-overview#configuration), **silent requests** and more.
 
 ## Scenario
 
@@ -43,7 +43,7 @@ This sample demonstrates a Vanilla JavaScript single-page application that lets 
 - A modern web browser. This sample uses **ES6** conventions and will not run on **Internet Explorer**.
 - [Visual Studio Code](https://code.visualstudio.com/download) is recommended for running and editing this sample.
 - [VS Code Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) extension is recommended for interacting with Azure through VS Code Interface.
-- An Azure Active Directory B2C (Azure AD B2C) tenant. For more information on how to get an Azure AD tenant, see: [Create an Azure Active Directory B2C tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)
+- An Azure AD B2C (Azure AD B2C) tenant. For more information on how to get a Microsoft Entra tenant, see: [Create an Azure AD B2C tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)
 - A user account in your Azure AD B2C tenant.
 
 ## Setup
@@ -74,30 +74,30 @@ or download and extract the repository .zip file.
 
 ## Registration
 
-> :information_source: This sample comes with a pre-registered application for testing purposes. If you would like to use your own **Azure AD B2C** tenant and application, follow the steps below to register and configure the applications in the **Azure Portal**. Otherwise, continue with the steps for [Running the sample](#running-the-sample).
+> :information_source: This sample comes with a pre-registered application for testing purposes. If you would like to use your own **Azure AD B2C** tenant and application, follow the steps below to register and configure the applications in the **Microsoft admin center**. Otherwise, continue with the steps for [Running the sample](#running-the-sample).
 
 ### Choose the Azure AD B2C tenant where you want to create your applications
 
 As a first step you'll need to:
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Microsoft admin center](https://portal.azure.com).
 1. If your account is present in more than one Azure AD B2C tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Azure AD B2C tenant.
 
 1. #### Create User Flows and Custom Policies
 
-Please refer to: [Tutorial: Create userflows in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
+Please refer to: [Tutorial: Create userflows in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
 
-> :warning: This sample requires B2C user-flows to emit the **emails** claim in the ID token, which is used as **username** by MSAL. To do so, navigate to the [Azure portal](https://portal.azure.com) and locate the **Azure AD B2C** service. Then, navigate to the **User flows** blade. Select the **User Attributes** tab and make sure **Email Address** is checked. Then select the **Application Claims** tab and make sure **Email Addresses** is checked. 
+> :warning: This sample requires B2C user-flows to emit the **emails** claim in the ID token, which is used as **username** by MSAL. To do so, navigate to the [Microsoft admin center](https://portal.azure.com) and locate the **Azure AD B2C** service. Then, navigate to the **User flows** blade. Select the **User Attributes** tab and make sure **Email Address** is checked. Then select the **Application Claims** tab and make sure **Email Addresses** is checked. 
 >
 > You may want additional claims (such as **object ID** (*oid*) and etc.) to appear in the ID tokens obtained from Azure AD B2C user-flows. In that case, please refer to [User profile attributes](https://learn.microsoft.com/azure/active-directory-b2c/user-profile-attributes) to learn about how to configure your user-flows to emit those claims.
 
 #### Add External Identity Providers
 
-Please refer to: [Tutorial: Add identity providers to your applications in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)
+Please refer to: [Tutorial: Add identity providers to your applications in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)
 
 ### Register the service app (msal-node-api)
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select the **Azure Active Directory B2C** service.
+1. Navigate to the [Microsoft admin center](https://portal.azure.com) and select the **Azure AD B2C** service.
 1. Select the **App Registrations** blade on the left, then select **New registration**.
 1. In the **Register an application page** that appears, enter your application's registration information:
     1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `msal-node-api`.
@@ -131,13 +131,13 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
 > In the steps below, "ClientID" is the same as "Application ID" or "AppId".
 
 1. Open the `API\authConfig.json` file.
-1. Find the key `clientID` and replace the existing value with the application ID (clientId) of `msal-node-api` app copied from the Azure portal.
-1. Find the key `tenantID` and replace the existing value with your Azure AD tenant/directory ID.
+1. Find the key `clientID` and replace the existing value with the application ID (clientId) of `msal-node-api` app copied from the Microsoft admin center.
+1. Find the key `tenantID` and replace the existing value with your Microsoft Entra tenant/directory ID.
 1. Find the key `policyName` and replace the existing value with Enter_The_Your_policy_Name.
 
 ### Register the client app (msal-javascript-spa)
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select the **Azure Active Directory B2C** service.
+1. Navigate to the [Microsoft admin center](https://portal.azure.com) and select the **Azure AD B2C** service.
 1. Select the **App Registrations** blade on the left, then select **New registration**.
 1. In the **Register an application page** that appears, enter your application's registration information:
     1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `msal-javascript-spa`.
@@ -166,8 +166,8 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
 > In the steps below, "ClientID" is the same as "Application ID" or "AppId".
 
 1. Open the `SPA\public\authConfig.js` file.
-1. Find the key `Enter_the_Application_Id_Here` and replace the existing value with the application ID (clientId) of `msal-javascript-spa` app copied from the Azure portal.
-1. Find the key `Enter_the_Tenant_Info_Here` and replace the existing value with your Azure AD tenant/directory ID.
+1. Find the key `Enter_the_Application_Id_Here` and replace the existing value with the application ID (clientId) of `msal-javascript-spa` app copied from the Microsoft admin center.
+1. Find the key `Enter_the_Tenant_Info_Here` and replace the existing value with your Microsoft Entra tenant/directory ID.
 1. Find the key `Enter_the_Web_Api_Scope_Here` and replace the existing value with Scope.
 1. Find the key `policyName` and replace the existing value with Enter_The_Your_policy_Name.
 1. Find the key `b2cDomain` and replace the existing value with Enter_The_Tenant_Domain_name.
@@ -333,20 +333,20 @@ When granting access to data based on scopes, be sure to follow [the principle o
 Configure your application:
 
 - [Use Microsoft Authentication Library for JavaScript to work with Azure AD B2C](https://docs.microsoft.com/azure/active-directory/develop/msal-b2c-overview)
-- [Tutorial: Create an Azure Active Directory B2C tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)
+- [Tutorial: Create an Azure AD B2C tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)
 - [Single sign-on with MSAL.js](https://docs.microsoft.com/azure/active-directory/develop/msal-js-sso)
 - [Handle MSAL.js exceptions and errors](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=javascript)
 - [Logging in MSAL.js applications](https://docs.microsoft.com/azure/active-directory/develop/msal-logging?tabs=javascript)
 
 Learn more about **Microsoft identity platform** and **Azure AD B2C**:
 
-- [Microsoft identity platform (Azure Active Directory for developers)](https://docs.microsoft.com/azure/active-directory/develop/)
+- [Microsoft identity platform (Microsoft Entra ID for developers)](https://docs.microsoft.com/azure/active-directory/develop/)
 - [Overview of Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-- [What is Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/overview)
+- [What is Azure AD B2C?](https://docs.microsoft.com/azure/active-directory-b2c/overview)
 - [Azure AD B2C User Flows](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview)
 - [Azure AD B2C Custom Policies](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
 
-For more information about how OAuth 2.0 protocols work in this scenario and other scenarios, see [Authentication Scenarios for Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios).
+For more information about how OAuth 2.0 protocols work in this scenario and other scenarios, see [Authentication Scenarios for Microsoft Entra ID](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios).
 
 ## Community Help and Support
 
